@@ -14,6 +14,45 @@ public partial class Admin_RegisterItems : System.Web.UI.Page
     {
 
     }
+    protected void CreateButton_Click1(object sender, EventArgs e)
+    {
+        string dbstring = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+        SqlConnection con = new SqlConnection(dbstring);
+
+        string sqlStr = "SELECT itemId FROM Item WHERE itemId = @theItemID";
+
+        SqlCommand sqlCmd = new SqlCommand(sqlStr, con);
+        sqlCmd.Parameters.AddWithValue("@theItemID", itemIdTextBox.Text);
+
+        con.Open();
+
+        object result = sqlCmd.ExecuteScalar();
+        if (result == null)
+        {
+            itemNameTextBox.Visible = true;
+            itemNameLabel.Visible = true;
+            itemTypeLabel.Visible = true;
+            itemTypeTextBox.Visible = true;
+            descriptionLabel.Visible = true;
+            descriptionTextBox.Visible = true;
+            AuthorLabel.Visible = true;
+            AuthorTextBox.Visible = true;
+            StockLabel.Visible = true;
+            StockTextBox.Visible = true;
+            ImageLabel.Visible = true;
+            ImageFileUpload.Visible = true;
+            CreateButton.Visible = true;
+            con.Close();
+
+        }
+        else {
+            resultLabel.ForeColor = System.Drawing.Color.Red;
+            resultLabel.Text = "Item already exists!";
+        }
+       
+
+
+    }
     protected void CreateButton_Click(object sender, EventArgs e)
     {
         string dbstring = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;

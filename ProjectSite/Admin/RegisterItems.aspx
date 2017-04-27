@@ -9,65 +9,69 @@
     <table>
         <tr>
             <td>
-                <asp:Label ID="itemIdLabel" runat="server" Text="Label"> Item Id:  </asp:Label>
+                <asp:Label ID="itemIdLabel" runat="server" Text="Label" > Item Id:  </asp:Label>
             </td>
             <td>
                 <asp:TextBox ID="itemIdTextBox" runat="server"></asp:TextBox>
             </td>
-        </tr>
-        <tr>
             <td>
-                <asp:Label ID="itemNameLabel" runat="server" Text="Label">Item Name:</asp:Label>
-            </td>
-            <td>
-                <asp:TextBox ID="itemNameTextBox" runat="server"></asp:TextBox>
+                <asp:Button ID="Button1" runat="server" Text="Button" OnClick="CreateButton_Click1" />
             </td>
         </tr>
         <tr>
             <td>
-                <asp:Label ID="itemTypeLabel" runat="server" Text="Label">Type:</asp:Label>
+                <asp:Label ID="itemNameLabel" runat="server" Text="Label" Visible="false" >Item Name:</asp:Label>
             </td>
             <td>
-                <asp:TextBox ID="itemTypeTextBox" runat="server"></asp:TextBox>
+                <asp:TextBox ID="itemNameTextBox" runat="server" Visible="false"></asp:TextBox>
+            </td>
+            
+        </tr>
+        <tr>
+            <td>
+                <asp:Label ID="itemTypeLabel" runat="server" Text="Label" Visible="false"> Type:</asp:Label>
+            </td>
+            <td>
+                <asp:TextBox ID="itemTypeTextBox" runat="server" Visible="false"></asp:TextBox>
             </td>
         </tr>
         <tr>
             <td>
-                <asp:Label ID="descriptionLabel" runat="server" Text="Label">Description:</asp:Label>
+                <asp:Label ID="descriptionLabel" runat="server" Text="Label" Visible="false">Description:</asp:Label>
             </td>
             <td>
-                <asp:TextBox ID="descriptionTextBox" runat="server"></asp:TextBox>
+                <asp:TextBox ID="descriptionTextBox" runat="server" Visible="false"></asp:TextBox>
             </td>
         </tr>
          <tr>
             <td>
-                <asp:Label ID="AuthorLabel" runat="server" Text="Label">Author:</asp:Label>
+                <asp:Label ID="AuthorLabel" runat="server" Text="Label" Visible="false">Author:</asp:Label>
             </td>
             <td>
-                <asp:TextBox ID="AuthorTextBox" runat="server"></asp:TextBox>
+                <asp:TextBox ID="AuthorTextBox" runat="server" Visible="false"></asp:TextBox>
             </td>
         </tr>
          <tr>
             <td>
-                <asp:Label ID="StockLabel" runat="server" Text="Label">Stock:</asp:Label>
+                <asp:Label ID="StockLabel" runat="server" Text="Label" Visible="false">Stock:</asp:Label>
             </td>
             <td>
-                <asp:TextBox ID="StockTextBox" runat="server"></asp:TextBox>
+                <asp:TextBox ID="StockTextBox" runat="server" Visible="false"></asp:TextBox>
             </td>
         </tr>
         <tr>
        <td>
-         <asp:Label ID="ImageLabel" runat="server" Width="110px" Text="Image of room:"></asp:Label>
+         <asp:Label ID="ImageLabel" runat="server" Width="110px" Text="Image of room:" Visible="false"></asp:Label>
        </td>
        <td>
-         <asp:FileUpload ID="ImageFileUpload" runat="server" />
+         <asp:FileUpload ID="ImageFileUpload" runat="server" Visible="false"/>
        </td>
      </tr>
      <tr>
        <td colspan="2">
              <br/>
          <asp:Button ID="CreateButton" runat="server" Text="Create Item" 
-        onclick="CreateButton_Click" />    
+        onclick="CreateButton_Click" Visible="false" />    
        </td>
      </tr>
 
