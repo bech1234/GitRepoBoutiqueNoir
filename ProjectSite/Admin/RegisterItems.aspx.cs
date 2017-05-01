@@ -43,11 +43,28 @@ public partial class Admin_RegisterItems : System.Web.UI.Page
             ImageFileUpload.Visible = true;
             CreateButton.Visible = true;
             con.Close();
+            resultLabel.Visible = false;
 
         }
         else {
+            itemNameTextBox.Visible = false;
+            itemNameLabel.Visible = false;
+            itemTypeLabel.Visible = false;
+            itemTypeTextBox.Visible = false;
+            descriptionLabel.Visible = false;
+            descriptionTextBox.Visible = false;
+            AuthorLabel.Visible = false;
+            AuthorTextBox.Visible = false;
+            StockLabel.Visible = false;
+            StockTextBox.Visible = false;
+            ImageLabel.Visible = false;
+            ImageFileUpload.Visible = false;
+            CreateButton.Visible = false;
+            con.Close();
+
             resultLabel.ForeColor = System.Drawing.Color.Red;
             resultLabel.Text = "Item already exists!";
+            resultLabel.Visible = true;
         }
        
 
@@ -115,18 +132,43 @@ public partial class Admin_RegisterItems : System.Web.UI.Page
             sqlCmd2.Parameters.AddWithValue("@theAuthor", AuthorTextBox.Text);
             sqlCmd2.Parameters.AddWithValue("@theStock", StockTextBox.Text);
             sqlCmd2.Parameters.AddWithValue("@theImage", imagePath);
+            //if (itemNameTextBox == null)
+            //{
+            //    con.Close();
+
+            //    resultLabel1.ForeColor = System.Drawing.Color.Black;
+            //    resultLabel1.Text = "Item name";
+            //}
+            
 
             sqlCmd2.ExecuteNonQuery();
 
             con.Close();
 
-            resultLabel.ForeColor = System.Drawing.Color.Black;
-            resultLabel.Text = "Item was created";
+            resultLabel1.ForeColor = System.Drawing.Color.Black;
+            resultLabel1.Text = "Item was created";
+            
         }
         else
         {
+            itemNameTextBox.Visible = false;
+            itemNameLabel.Visible = false;
+            itemTypeLabel.Visible = false;
+            itemTypeTextBox.Visible = false;
+            descriptionLabel.Visible = false;
+            descriptionTextBox.Visible = false;
+            AuthorLabel.Visible = false;
+            AuthorTextBox.Visible = false;
+            StockLabel.Visible = false;
+            StockTextBox.Visible = false;
+            ImageLabel.Visible = false;
+            ImageFileUpload.Visible = false;
+            CreateButton.Visible = false;
+            con.Close();
+            resultLabel.Visible = true;
             resultLabel.ForeColor = System.Drawing.Color.Red;
             resultLabel.Text = "Item already exists!";
+            
 
 
         }

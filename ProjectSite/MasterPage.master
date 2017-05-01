@@ -1,5 +1,5 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
-
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -15,11 +15,15 @@
     <script src="Scripts/html5shiv.min.js"></script>
      
     <link href="StyleSheet.css" rel="stylesheet" />
-<
+   
 </head>
 <body>
     <form id="form1" runat="server">
         <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" />
+
+        <!-- My sitemap datasource-->
+        <asp:SiteMapDataSource ID="AdminSiteMapDataSource" runat="server" SiteMapProvider="AdminSitemap" />
+
     <div id="wrapper">
         <div id="header">
             <div id="logo">
@@ -39,10 +43,25 @@
              
         </div>
         <div id="RealMenu">
+            <asp:LoginView ID="LoginView2" runat="server">
+
+                <AnonymousTemplate>
         <asp:Menu ID="Menu1" runat="server" DataSourceID="SiteMapDataSource1" Orientation="Horizontal" StaticDisplayLevels="2" CssClass="MenuHeader">
             <StaticMenuItemStyle CssClass="MenuHeader" />
             <StaticMenuStyle CssClass="MenuHeader" />
         </asp:Menu>
+                 </AnonymousTemplate>
+                     <RoleGroups>
+                  <asp:RoleGroup Roles="Admin">
+                      <ContentTemplate>
+                          <asp:Menu ID="Menu1" runat="server" DataSourceID="AdminSiteMapDataSource" Orientation="Horizontal" StaticDisplayLevels="2" CssClass="MenuHeader">
+            <StaticMenuItemStyle CssClass="MenuHeader" />
+            <StaticMenuStyle CssClass="MenuHeader" />
+                              </asp:Menu>
+                      </ContentTemplate>
+                  </asp:RoleGroup>
+                     </RoleGroups>
+                </asp:LoginView>
         </div>
 
         <div id="myCarousel" class="carousel slide container" data-ride="carousel" >
@@ -80,10 +99,10 @@
         <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
         </asp:ContentPlaceHolder>
         </div>
-        <div id="secondary">
+       <%-- <div id="secondary">
         <asp:ContentPlaceHolder id="ContentPlaceHolder2" runat="server">
         </asp:ContentPlaceHolder>
-        </div>
+        </div>--%>
      </div>
        
         </div>

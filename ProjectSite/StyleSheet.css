@@ -47,7 +47,7 @@
     margin-right:50px;
     margin-bottom:20px;
     display:block;
-    height:450px;
+    min-height:500px;
     box-shadow: 0 5px 10px -5px rgba(0,0,0,0.5);
     padding: 25px 20px;
 }
@@ -93,7 +93,35 @@
     padding-top: 20px;
     min-width: 550px;
 }
+#brandBox
+{
+    
+    background-color:#edeae4; 
+    float:left;
+    box-shadow: 0 5px 10px -5px rgba(0,0,0,0.5);
+    padding:10px; 
+    margin: 55px 55px 55px 55px;
+    /*border:1px solid #000077;*/
 
+}
+#brandText {
+    float:left;
+    margin:30px;
+}
+#imageBrandBox {
+   
+    float:right;
+    margin:0px 50px;
+}
+
+td {
+    padding:5px;
+     text-align: left;
+    vertical-align: initial;
+}
 /*.carousel .item {
     height: 345px;
 }*/
+#descriptionTextBoxStyle {
+    vertical-align: top; text-align: left;
+}
