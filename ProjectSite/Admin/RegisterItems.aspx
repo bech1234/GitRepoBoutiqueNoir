@@ -44,6 +44,14 @@
                 <asp:TextBox ID="itemTypeTextBox" runat="server" Visible="false"></asp:TextBox>
             </td>
         </tr>
+        <tr>
+            <td>
+                <asp:Label ID="priceLabel" runat="server" Text="Label" Visible="false">Price:</asp:Label>
+            </td>
+            <td>
+                 <asp:TextBox ID="priceTextBox" runat="server" Visible="false"></asp:TextBox>
+            </td>
+        </tr>
        
          <tr>
             <td>

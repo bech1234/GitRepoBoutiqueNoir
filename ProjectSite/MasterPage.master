@@ -27,8 +27,9 @@
     <div id="wrapper">
         <div id="header">
             <div id="logo">
-            <img src="Images/noir_logo_small.png" />
+                <asp:Image ID="Image1" runat="server" ImageUrl="~/Images/noir_logo_small.png" />
                 </div>
+           
              <div id="LogoLogin" > 
                 <asp:LoginView ID="LoginView1" runat="server">
                     <AnonymousTemplate>

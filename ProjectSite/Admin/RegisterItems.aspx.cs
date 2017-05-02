@@ -35,6 +35,8 @@ public partial class Admin_RegisterItems : System.Web.UI.Page
             itemTypeTextBox.Visible = true;
             descriptionLabel.Visible = true;
             descriptionTextBox.Visible = true;
+            priceLabel.Visible = true;
+            priceTextBox.Visible = true;
             AuthorLabel.Visible = true;
             AuthorTextBox.Visible = true;
             StockLabel.Visible = true;
@@ -53,6 +55,8 @@ public partial class Admin_RegisterItems : System.Web.UI.Page
             itemTypeTextBox.Visible = false;
             descriptionLabel.Visible = false;
             descriptionTextBox.Visible = false;
+            priceLabel.Visible = false;
+            priceTextBox.Visible = false;
             AuthorLabel.Visible = false;
             AuthorTextBox.Visible = false;
             StockLabel.Visible = false;
@@ -75,17 +79,24 @@ public partial class Admin_RegisterItems : System.Web.UI.Page
         string dbstring = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
         SqlConnection con = new SqlConnection(dbstring);
 
-        string sqlStr = "SELECT itemId FROM Item WHERE itemId = @theItemID";
 
+        string sqlMy = "SELECT Name FROM Item WHERE Name = @theName";
+        SqlCommand sqlName = new SqlCommand(sqlMy, con);
+        sqlName.Parameters.AddWithValue("@theName", itemNameTextBox.Text);
+        
+        string sqlStr = "SELECT itemId FROM Item WHERE itemId = @theItemID";
         SqlCommand sqlCmd = new SqlCommand(sqlStr, con);
         sqlCmd.Parameters.AddWithValue("@theItemID", itemIdTextBox.Text);
 
         con.Open();
 
-        object result = sqlCmd.ExecuteScalar();
-        if (result == null)
+        object result = sqlCmd.ExecuteScalar();// first row check in our case it is ID
+        object name=sqlName.ExecuteScalar();
+
+        // should i coppy everything
+        if (result == null && name==null )
         {
-            string sqlStr2 = "INSERT INTO Item (ItemId,Name,Type,Description,Author,Stock,image) VALUES (@theItemId, @theName, @theType, @theDescription ,@theAuthor, @theStock, @theImage)";
+            string sqlStr2 = "INSERT INTO Item (ItemId,Name,Type,Description,Author,Stock,image,price) VALUES (@theItemId, @theName, @theType, @theDescription ,@theAuthor, @theStock, @theImage, @thePrice)";
             SqlCommand sqlCmd2 = new SqlCommand(sqlStr2, con);
 
             int itemId = Convert.ToInt32(itemIdTextBox.Text);
@@ -99,7 +110,19 @@ public partial class Admin_RegisterItems : System.Web.UI.Page
             }
             catch (FormatException ex)
             {
-                stock = 0;
+
+                stock = 0; 
+            }
+            int price;
+            string priceStr = priceTextBox.Text;
+            try
+            {
+                price= Convert.ToInt32(priceStr);
+            }
+            catch (FormatException ex)
+            {
+
+                price = 0;
             }
             string imagePath = "~/Images/brands/NoImage.gif";
 
@@ -128,6 +151,7 @@ public partial class Admin_RegisterItems : System.Web.UI.Page
             sqlCmd2.Parameters.AddWithValue("@theItemId", itemIdTextBox.Text);
             sqlCmd2.Parameters.AddWithValue("@theName", itemNameTextBox.Text);
             sqlCmd2.Parameters.AddWithValue("@theType", itemTypeTextBox.Text);
+            sqlCmd2.Parameters.AddWithValue("@thePrice", priceTextBox.Text);
             sqlCmd2.Parameters.AddWithValue("@theDescription", descriptionTextBox.Text);
             sqlCmd2.Parameters.AddWithValue("@theAuthor", AuthorTextBox.Text);
             sqlCmd2.Parameters.AddWithValue("@theStock", StockTextBox.Text);
@@ -157,6 +181,8 @@ public partial class Admin_RegisterItems : System.Web.UI.Page
             itemTypeTextBox.Visible = false;
             descriptionLabel.Visible = false;
             descriptionTextBox.Visible = false;
+            priceLabel.Visible = false;
+            priceTextBox.Visible = false;
             AuthorLabel.Visible = false;
             AuthorTextBox.Visible = false;
             StockLabel.Visible = false;
@@ -165,10 +191,20 @@ public partial class Admin_RegisterItems : System.Web.UI.Page
             ImageFileUpload.Visible = false;
             CreateButton.Visible = false;
             con.Close();
-            resultLabel.Visible = true;
-            resultLabel.ForeColor = System.Drawing.Color.Red;
-            resultLabel.Text = "Item already exists!";
-            
+            if (result != null)
+            {
+                resultLabel.Visible = true;
+                resultLabel.ForeColor = System.Drawing.Color.Red;
+                resultLabel.Text = "Item already exists!";
+            }
+            else if (name != null)
+            {
+                resultLabel.Visible = true;
+                resultLabel.ForeColor = System.Drawing.Color.Red;
+                resultLabel.Text = "Name already exists!";
+
+
+            }
 
 
         }

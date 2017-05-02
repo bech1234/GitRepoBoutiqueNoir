@@ -20,6 +20,8 @@
                    <br />
                    Type: <asp:Label ID="TypeLabel" runat="server" Text='<%# Eval("Type") %>'></asp:Label>
                    <br />
+                   Price: <asp:Label ID="priceLabel" runat="server" Text='<%# Eval("Price") %>'></asp:Label>
+                   <br />
                    Description: <asp:Label ID="DescriptionLabel" runat="server" Text='<%# Eval("Description") %>'></asp:Label>
                    </span>
                 </div>
@@ -44,7 +46,7 @@
 
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
          ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
-         SelectCommand="SELECT [ItemId], [Name], [Type], [Description], [Author], [Stock], [image]  FROM [Item] ORDER BY [name]">
+         SelectCommand="SELECT [ItemId], [Name], [Type], [Price],[Description], [Author], [Stock], [image]  FROM [Item] ORDER BY [name]">
      </asp:SqlDataSource>
 </asp:Content>
 
