@@ -5,7 +5,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <link href="StyleSheet.css" rel="stylesheet" />
-    <asp:ListView ID="ListView1" runat="server" DataKeyNames="ItemId" DataSourceID="SqlDataSource1">
+    <asp:ListView ID="ListView1" runat="server" DataKeyNames="ItemId" DataSourceID="SqlDataSource1" OnSelectedIndexChanged="AddToCartButton_Click1">
        <ItemTemplate>
          <div id="brandBox">
               <div style="margin:0px 50px;">
@@ -16,6 +16,8 @@
             </div>
             <div id="brandText">
                <span style="color: #000000;">
+
+                    <asp:Label ID="Label1" runat="server" Text='<%# Eval("ItemId") %>' Visible="true"></asp:Label>
                    Name: <asp:Label ID="nameLabel" runat="server" Text='<%# Eval("Name") %>'></asp:Label>
                    <br />
                    Type: <asp:Label ID="TypeLabel" runat="server" Text='<%# Eval("Type") %>'></asp:Label>
@@ -24,6 +26,8 @@
                    <br />
                    Description: <asp:Label ID="DescriptionLabel" runat="server" Text='<%# Eval("Description") %>'></asp:Label>
                    </span>
+                <br />
+                <asp:Button ID="AddToCartButton" runat="server" Text="Add to Cart" CommandName="select" />
                 </div>
             
             </div>
