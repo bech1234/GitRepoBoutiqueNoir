@@ -14,18 +14,33 @@ public partial class Brands : System.Web.UI.Page
 
     protected void AddToCartButton_Click1(object sender, EventArgs e)
     {
-        List<int> cart = new List<int>();
-        if (Session["cart"] != null)
         {
-            cart = (List<int>)Session["cart"];
+
+            MembershipUser User = Membership.GetUser();
+
+
+            if (User == null)
+            {
+                Response.Redirect("Login.aspx");
+            }
+
+            else
+            {
+                List<int> cart = new List<int>();
+                if (Session["cart"] != null)
+                {
+                    cart = (List<int>)Session["cart"];
+                }
+
+                string itemIdStr = ListView1.SelectedDataKey.Value.ToString();
+
+
+                int itemId = Convert.ToInt32(itemIdStr);
+                cart.Add(itemId);
+                Session["cart"] = cart;
+            }
+
         }
-
-        string itemIdStr = ListView1.SelectedDataKey.Value.ToString();
-       
-
-        int itemId = Convert.ToInt32(itemIdStr);
-        cart.Add(itemId);
-        Session["cart"] = cart;
         
 
     }

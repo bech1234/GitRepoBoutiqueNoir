@@ -4,11 +4,11 @@
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <div>
+    <div id="LoginView">
         <asp:Login ID="Login1" runat="server">
         </asp:Login>
     </div>
-    <div>
+    <div id="signUpReg">
         <asp:CreateUserWizard ID="CreateUserWizard1" runat="server" OnCreatedUser="CreateUserWizard1_CreatedUser">
             <WizardSteps>
                 <asp:CreateUserWizardStep ID="CreateUserWizardStep1" runat="server">
