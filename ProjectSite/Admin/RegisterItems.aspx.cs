@@ -93,7 +93,7 @@ public partial class Admin_RegisterItems : System.Web.UI.Page
         object result = sqlCmd.ExecuteScalar();// first row check in our case it is ID
         object name=sqlName.ExecuteScalar();
 
-        // should i coppy everything
+        
         if (result == null && name==null )
         {
             string sqlStr2 = "INSERT INTO Item (ItemId,Name,Type,Description,Author,Stock,image,price) VALUES (@theItemId, @theName, @theType, @theDescription ,@theAuthor, @theStock, @theImage, @thePrice)";

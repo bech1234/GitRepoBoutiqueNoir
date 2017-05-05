@@ -23,6 +23,8 @@
 
         <!-- My sitemap datasource-->
         <asp:SiteMapDataSource ID="AdminSiteMapDataSource" runat="server" SiteMapProvider="AdminSitemap" />
+        <asp:SiteMapDataSource ID="UserSiteMapDataSource" runat="server" SiteMapProvider="UserSitemap" />
+
 
     <div id="wrapper">
         <div id="header">
@@ -53,6 +55,17 @@
         </asp:Menu>
                  </AnonymousTemplate>
                      <RoleGroups>
+
+                          
+                         <asp:RoleGroup Roles="User">
+                      <ContentTemplate>
+                          <asp:Menu ID="Menu1" runat="server" DataSourceID="UserSiteMapDataSource" Orientation="Horizontal" StaticDisplayLevels="2" CssClass="MenuHeader">
+            <StaticMenuItemStyle CssClass="MenuHeader" />
+            <StaticMenuStyle CssClass="MenuHeader" />
+                              </asp:Menu>
+                      </ContentTemplate>
+                             </asp:RoleGroup>
+
                   <asp:RoleGroup Roles="Admin">
                       <ContentTemplate>
                           <asp:Menu ID="Menu1" runat="server" DataSourceID="AdminSiteMapDataSource" Orientation="Horizontal" StaticDisplayLevels="2" CssClass="MenuHeader">
@@ -70,19 +83,16 @@
 				
 				<div class="carousel-inner">
 					<div class="item active">
-						<a target="_blank" href="images/SideFinal.png">
-                            <img src="Images/IMG_0426-150x150.jpg" />
-						</a>
+                        <asp:HyperLink ID="HyperLink1" runat="server" Target="_blank" NavigateUrl="~/Images/IMG_0426-150x150.jpg">
+                            <asp:Image ID="Image2" runat="server" ImageUrl="~/Images/IMG_0426-150x150.jpg"/></asp:HyperLink>
 					</div>
 					<div class="item">
-						<a target="_blank" href="images/SideFinal.png">
-                            <img src="Images/IMG_0428-150x150.jpg" />
-						</a>
+                        <asp:HyperLink ID="HyperLink2" runat="server" Target="_blank" NavigateUrl="~/Images/IMG_0428-150x150.jpg">
+                            <asp:Image ID="Image3" runat="server" ImageUrl="~/Images/IMG_0428-150x150.jpg"/></asp:HyperLink>
 					</div>
 					<div class="item">
-						<a target="_blank" href="images/Top%20full%20legs%20together.png">
-                            <img src="Images/IMG_0429-150x150.jpg" />
-						</a>
+                        <asp:HyperLink ID="HyperLink3" runat="server" Target="_blank" NavigateUrl="~/Images/IMG_0429-150x150.jpg">
+                            <asp:Image ID="Image4" runat="server" ImageUrl="~/Images/IMG_0429-150x150.jpg" /></asp:HyperLink>
 					</div>
 				</div>
 				<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">

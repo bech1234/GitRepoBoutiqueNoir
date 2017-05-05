@@ -71,11 +71,11 @@
             </td>
         </tr> 
         <tr>
-            <td>
-                <asp:Label ID="descriptionLabel" runat="server" Text="Label" Visible="false">Description:</asp:Label>
+            <td style="vertical-align: middle">
+                <asp:Label ID="descriptionLabel" runat="server" Text="Label" Visible="false" >Description:</asp:Label>
             </td>
            <td>
-                <asp:TextBox ID="descriptionTextBox" runat="server" Visible="false" CssClass="descriptionTextBoxStyle" Height="79px" Width="145px"></asp:TextBox>
+                <asp:TextBox ID="descriptionTextBox" runat="server" Visible="false" CssClass="descriptionTextBoxStyle" Height="79px" Width="145px" TextMode="MultiLine"></asp:TextBox>
             </td>
             <%--<td>
                 <textarea id="descriptionTextBox" cols="20" rows="2" visible="false" runat="></textarea>
